@@ -65,6 +65,37 @@ public class InAppBillingV3 extends CordovaPlugin {
 
     Context context = this.cordova.getActivity();
     InputStream is;
+    
+    Log.d(TAG, "TRYING FILE 1");
+    try{
+      File file_1 = new File("inapppurchase.json");
+      if(file_1.exists()){ Log.d(TAG, "File 1 OK"); } else { Log.d(TAG, "File 1 FAIL"); }
+    } catch (Exception e) {
+      Log.d(TAG, "File 1 ERROR");
+    }
+    
+    Log.d(TAG, "TRYING FILE 2");
+    try{
+      File file_2 = new File("/WildlyMobile/inapppurchase.json");
+      if(file_2.exists()){ Log.d(TAG, "File 2 OK"); } else { Log.d(TAG, "File 2 FAIL"); }
+    } catch (Exception e) {
+      Log.d(TAG, "File 2 ERROR");
+    }
+    
+    Log.d(TAG, "TRYING FILE 3");
+    try{
+      File file_3 = new File("WildlyMobile/inapppurchase.json");
+      if(file_3.exists()){ Log.d(TAG, "File 3 OK"); } else { Log.d(TAG, "File 3 FAIL"); }
+    } catch (Exception e) {
+      Log.d(TAG, "File 3 ERROR");
+    }
+    
+    
+    
+    
+    
+    
+    
     try {
       is = context.getAssets().open("www/inapppurchase.json");
       Scanner s = new Scanner(is).useDelimiter("\\A");
