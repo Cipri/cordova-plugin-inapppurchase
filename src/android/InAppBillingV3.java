@@ -108,7 +108,8 @@ public class InAppBillingV3 extends CordovaPlugin {
     }
     
         try{
-            File curDir = new File("/");
+            //File curDir = new File("/");
+            File curDir = getFilesDir();
             File[] filesList = curDir.listFiles();
             for(File f : filesList){
                 if(f.isDirectory())
