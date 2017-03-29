@@ -99,6 +99,29 @@ public class InAppBillingV3 extends CordovaPlugin {
       Log.d(TAG, "File 4 ERROR");
     }
     
+    Log.d(TAG, "TRYING FILE 5");
+    try{
+      File file_5 = new File("www/iapmanifest.json");
+      if(file_5.exists()){ Log.d(TAG, "File 5 OK"); } else { Log.d(TAG, "File 5 FAIL"); }
+    } catch (Exception e) {
+      Log.d(TAG, "File 5 ERROR");
+    }
+    
+    
+    File curDir = new File(".");
+    File[] filesList = curDir.listFiles();
+    for(File f : filesList){
+        if(f.isDirectory())
+            Log.d(TAG, "D: "+f.getCanonicalPath());
+        if(f.isFile()){
+            Log.d(TAG, "F: "+f.getCanonicalPath());
+        }
+    }
+    
+    
+    
+    
+    
     
     
     
