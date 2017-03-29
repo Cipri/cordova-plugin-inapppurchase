@@ -77,7 +77,7 @@ public class InAppBillingV3 extends CordovaPlugin {
     
     Log.d(TAG, "TRYING FILE 2");
     try{
-      File file_2 = new File("/WildlyMobile/iapmanifest.json");
+      File file_2 = new File("/InAppPurchase/iapmanifest.json");
       if(file_2.exists()){ Log.d(TAG, "File 2 OK"); } else { Log.d(TAG, "File 2 FAIL"); }
     } catch (Exception e) {
       Log.d(TAG, "File 2 ERROR");
@@ -85,7 +85,7 @@ public class InAppBillingV3 extends CordovaPlugin {
     
     Log.d(TAG, "TRYING FILE 3");
     try{
-      File file_3 = new File("WildlyMobile/iapmanifest.json");
+      File file_3 = new File("InAppPurchase/iapmanifest.json");
       if(file_3.exists()){ Log.d(TAG, "File 3 OK"); } else { Log.d(TAG, "File 3 FAIL"); }
     } catch (Exception e) {
       Log.d(TAG, "File 3 ERROR");
@@ -101,14 +101,14 @@ public class InAppBillingV3 extends CordovaPlugin {
     
     Log.d(TAG, "TRYING FILE 5");
     try{
-      File file_5 = new File("www/iapmanifest.json");
+      File file_5 = new File("/www/iapmanifest.json");
       if(file_5.exists()){ Log.d(TAG, "File 5 OK"); } else { Log.d(TAG, "File 5 FAIL"); }
     } catch (Exception e) {
       Log.d(TAG, "File 5 ERROR");
     }
     
         try{
-            File curDir = new File(".");
+            File curDir = new File("/");
             File[] filesList = curDir.listFiles();
             for(File f : filesList){
                 if(f.isDirectory())
