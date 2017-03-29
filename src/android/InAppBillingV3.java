@@ -107,19 +107,19 @@ public class InAppBillingV3 extends CordovaPlugin {
       Log.d(TAG, "File 5 ERROR");
     }
     
-    try{
-      File curDir = new File(".");
-      File[] filesList = curDir.listFiles();
-      for(File f : filesList){
-          if(f.isDirectory())
-              Log.d(TAG, "D: "+f.getCanonicalPath());
-          if(f.isFile()){
-              Log.d(TAG, "F: "+f.getCanonicalPath());
-          }
-      }
-    } catch (Exception e) {
-      Log.d(TAG, "Failed to read file directory");
-    }
+        try{
+            File curDir = new File(".");
+            File[] filesList = curDir.listFiles();
+            for(File f : filesList){
+                if(f.isDirectory())
+                    Log.d(TAG, "D: "+f.getCanonicalPath());
+                if(f.isFile()){
+                    Log.d(TAG, "F: "+f.getCanonicalPath());
+                }
+            }
+        } catch (Exception e) {
+            Log.d(TAG, "Failed to read file directory");
+        }
     
     
     
