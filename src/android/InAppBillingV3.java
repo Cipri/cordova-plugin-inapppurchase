@@ -69,7 +69,7 @@ public class InAppBillingV3 extends CordovaPlugin {
     
     Log.d(TAG, "TRYING FILE 1");
     try{
-      File file_1 = new File("inapppurchase.json");
+      File file_1 = new File("iapmanifest.json");
       if(file_1.exists()){ Log.d(TAG, "File 1 OK"); } else { Log.d(TAG, "File 1 FAIL"); }
     } catch (Exception e) {
       Log.d(TAG, "File 1 ERROR");
@@ -77,7 +77,7 @@ public class InAppBillingV3 extends CordovaPlugin {
     
     Log.d(TAG, "TRYING FILE 2");
     try{
-      File file_2 = new File("/WildlyMobile/inapppurchase.json");
+      File file_2 = new File("/WildlyMobile/iapmanifest.json");
       if(file_2.exists()){ Log.d(TAG, "File 2 OK"); } else { Log.d(TAG, "File 2 FAIL"); }
     } catch (Exception e) {
       Log.d(TAG, "File 2 ERROR");
@@ -85,20 +85,26 @@ public class InAppBillingV3 extends CordovaPlugin {
     
     Log.d(TAG, "TRYING FILE 3");
     try{
-      File file_3 = new File("WildlyMobile/inapppurchase.json");
+      File file_3 = new File("WildlyMobile/iapmanifest.json");
       if(file_3.exists()){ Log.d(TAG, "File 3 OK"); } else { Log.d(TAG, "File 3 FAIL"); }
     } catch (Exception e) {
       Log.d(TAG, "File 3 ERROR");
+    }
+    
+    Log.d(TAG, "TRYING FILE 4");
+    try{
+      File file_4 = new File("www/iapmanifest.json");
+      if(file_4.exists()){ Log.d(TAG, "File 4 OK"); } else { Log.d(TAG, "File 4 FAIL"); }
+    } catch (Exception e) {
+      Log.d(TAG, "File 4 ERROR");
     }
     
     
     
     
     
-    
-    
     try {
-      is = context.getAssets().open("www/inapppurchase.json");
+      is = context.getAssets().open("www/iapmanifest.json");
       Scanner s = new Scanner(is).useDelimiter("\\A");
       String manifestString = s.hasNext() ? s.next() : "";
       Log.d(TAG, "manifest:" + manifestString);
