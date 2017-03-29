@@ -11,7 +11,6 @@
 
 package com.alexdisler.inapppurchases;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -61,38 +60,16 @@ public class InAppBillingV3 extends CordovaPlugin {
 
   private JSONObject manifestObject = null;
 
-  private void CheckFile(String name){
-      Log.d(TAG, "TRYING FILE "+name);
-      try{
-          File theFile = new File( name );
-          if(theFile.exists()){ Log.d(TAG, "OK"); } else { Log.d(TAG, "FAIL"); }
-      } catch (Exception e) {
-          Log.d(TAG, "ERROR");
-      }     
-  }
-  
-  
   private JSONObject getManifestContents() {
     if (manifestObject != null) return manifestObject;
 
-    /*
-    CheckFile("iapmanifest.json");
-    CheckFile("/iapmanifest.json");
-    CheckFile(".iapmanifest.json");
-    CheckFile("../iapmanifest.json");
-    CheckFile("InAppPurchase/iapmanifest.json");
-    CheckFile("/InAppPurchase/iapmanifest.json");
-    CheckFile("WildlyMobile/iapmanifest.json");
-    CheckFile("/WildlyMobile/iapmanifest.json");
-    */
-    
     Context context = this.cordova.getActivity();
     InputStream is;
-
     try {
-      //is = context.getAssets().open("www/iapmanifest.json");
+      //is = context.getAssets().open("www/inapppurchase.json");
       //Scanner s = new Scanner(is).useDelimiter("\\A");
       //String manifestString = s.hasNext() ? s.next() : "";
+      
       String manifestString = "{ \"play_store_key\": \"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAySPAgf3FmbrFFZWUFsGvZp5E0AcbsDkLiPGWqWfcYK3qwbOGnzvkSSjmOko/o9J+tWiIMRActPJpuKnpH8Cz5oNPzSGg0f5GAEstZKUtnZ5hVn/NJmsQjoCqnkAAWo1tu2uJmjuKXkJe4aImyN78XCf3uvnULF+4zVHJek9s13zLEy0BYrpIGrPM74R8VZDJ91ALXj3r6kZZ/iSjNwA0y6o+Iyj8varBDB4bOiYvtxIx/c0Jc94GOJbhbJMIO9alM0PLk9dtgU5X6pKgkqV4ASsUNwtNKJQeGrIPstB49lX+5S04fPSNXr9Kvy4BavOu16vYrTCctKyg7GxqiCyzmQIDAQAB\" }"
       Log.d(TAG, "manifest:" + manifestString);
       manifestObject = new JSONObject(manifestString);
