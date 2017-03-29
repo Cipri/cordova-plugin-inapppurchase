@@ -60,17 +60,28 @@ public class InAppBillingV3 extends CordovaPlugin {
 
   private JSONObject manifestObject = null;
 
-  private JSONObject getManifestContents() {
+  private JSONObject getManifestContents()
+  {
+    Log.d(TAG, "Loading Manifest file (1)");
     if (manifestObject != null) return manifestObject;
-
+    Log.d(TAG, "Loading Manifest file (2)");
+    
     Context context = this.cordova.getActivity();
     InputStream is;
-    try {
-      is = context.getAssets().open("iapmanifest.json");
+    try
+    {
+      Log.d(TAG, "Opening file");
+      is = context.getAssets().open("iapmanifest2.json");
+      
+      Log.d(TAG, "File open OK");
       Scanner s = new Scanner(is).useDelimiter("\\A");
+      
+      Log.d(TAG, "Scanner OK");
       String manifestString = s.hasNext() ? s.next() : "";
+      
       Log.d(TAG, "manifest:" + manifestString);
       manifestObject = new JSONObject(manifestString);
+      
     } catch (IOException e) {
       Log.d(TAG, "Unable to read manifest file:" + e.toString());
       manifestObject = null;
