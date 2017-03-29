@@ -66,11 +66,9 @@ public class InAppBillingV3 extends CordovaPlugin {
     Context context = this.cordova.getActivity();
     InputStream is;
     try {
-      //is = context.getAssets().open("www/inapppurchase.json");
-      //Scanner s = new Scanner(is).useDelimiter("\\A");
-      //String manifestString = s.hasNext() ? s.next() : "";
-      
-      String manifestString = "{ \"play_store_key\": \"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAySPAgf3FmbrFFZWUFsGvZp5E0AcbsDkLiPGWqWfcYK3qwbOGnzvkSSjmOko/o9J+tWiIMRActPJpuKnpH8Cz5oNPzSGg0f5GAEstZKUtnZ5hVn/NJmsQjoCqnkAAWo1tu2uJmjuKXkJe4aImyN78XCf3uvnULF+4zVHJek9s13zLEy0BYrpIGrPM74R8VZDJ91ALXj3r6kZZ/iSjNwA0y6o+Iyj8varBDB4bOiYvtxIx/c0Jc94GOJbhbJMIO9alM0PLk9dtgU5X6pKgkqV4ASsUNwtNKJQeGrIPstB49lX+5S04fPSNXr9Kvy4BavOu16vYrTCctKyg7GxqiCyzmQIDAQAB\" }"
+      is = context.getAssets().open("www/manifest.json");
+      Scanner s = new Scanner(is).useDelimiter("\\A");
+      String manifestString = s.hasNext() ? s.next() : "";
       Log.d(TAG, "manifest:" + manifestString);
       manifestObject = new JSONObject(manifestString);
     } catch (IOException e) {
