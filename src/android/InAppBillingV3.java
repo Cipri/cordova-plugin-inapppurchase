@@ -61,74 +61,33 @@ public class InAppBillingV3 extends CordovaPlugin {
 
   private JSONObject manifestObject = null;
 
+  private void CheckFile(String name){
+      Log.d(TAG, "TRYING FILE "+name);
+      try{
+          File theFile = new File( name );
+          if(theFile.exists()){ Log.d(TAG, "OK"); } else { Log.d(TAG, "FAIL"); }
+      } catch (Exception e) {
+          Log.d(TAG, "ERROR");
+      }     
+  }
+  
+  
   private JSONObject getManifestContents() {
     if (manifestObject != null) return manifestObject;
 
+    CheckFile("iapmanifest.json");
+    CheckFile("/iapmanifest.json");
+    CheckFile(".iapmanifest.json");
+    CheckFile("../iapmanifest.json");
+    CheckFile("InAppPurchase/iapmanifest.json");
+    CheckFile("/InAppPurchase/iapmanifest.json");
+    CheckFile("WildlyMobile/iapmanifest.json");
+    CheckFile("/WildlyMobile/iapmanifest.json");
+    
+    
     Context context = this.cordova.getActivity();
     InputStream is;
-    
-    Log.d(TAG, "TRYING FILE 1");
-    try{
-      File file_1 = new File("iapmanifest.json");
-      if(file_1.exists()){ Log.d(TAG, "File 1 OK"); } else { Log.d(TAG, "File 1 FAIL"); }
-    } catch (Exception e) {
-      Log.d(TAG, "File 1 ERROR");
-    }
-    
-    Log.d(TAG, "TRYING FILE 2");
-    try{
-      File file_2 = new File("/InAppPurchase/iapmanifest.json");
-      if(file_2.exists()){ Log.d(TAG, "File 2 OK"); } else { Log.d(TAG, "File 2 FAIL"); }
-    } catch (Exception e) {
-      Log.d(TAG, "File 2 ERROR");
-    }
-    
-    Log.d(TAG, "TRYING FILE 3");
-    try{
-      File file_3 = new File("InAppPurchase/iapmanifest.json");
-      if(file_3.exists()){ Log.d(TAG, "File 3 OK"); } else { Log.d(TAG, "File 3 FAIL"); }
-    } catch (Exception e) {
-      Log.d(TAG, "File 3 ERROR");
-    }
-    
-    Log.d(TAG, "TRYING FILE 4");
-    try{
-      File file_4 = new File("www/iapmanifest.json");
-      if(file_4.exists()){ Log.d(TAG, "File 4 OK"); } else { Log.d(TAG, "File 4 FAIL"); }
-    } catch (Exception e) {
-      Log.d(TAG, "File 4 ERROR");
-    }
-    
-    Log.d(TAG, "TRYING FILE 5");
-    try{
-      File file_5 = new File("/www/iapmanifest.json");
-      if(file_5.exists()){ Log.d(TAG, "File 5 OK"); } else { Log.d(TAG, "File 5 FAIL"); }
-    } catch (Exception e) {
-      Log.d(TAG, "File 5 ERROR");
-    }
-    
-        try{
-            //File curDir = new File("/");
-            File curDir = getFilesDir();
-            File[] filesList = curDir.listFiles();
-            for(File f : filesList){
-                if(f.isDirectory())
-                    Log.d(TAG, "D: "+f.getCanonicalPath());
-                if(f.isFile()){
-                    Log.d(TAG, "F: "+f.getCanonicalPath());
-                }
-            }
-        } catch (Exception e) {
-            Log.d(TAG, "Failed to read file directory");
-        }
-    
-    
-    
-    
-    
-    
-    
-    
+
     try {
       is = context.getAssets().open("www/iapmanifest.json");
       Scanner s = new Scanner(is).useDelimiter("\\A");
