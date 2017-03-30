@@ -89,7 +89,7 @@ public class InAppBillingV3 extends CordovaPlugin {
   {
     //try{ listAssetFiles("",1); }catch (Exception e) {}
     //try{ listAssetFiles("/",1); }catch (Exception e) {}
-    Log.d(TAG, "--- LIST WWW ---");
+    Log.d(TAG, "--- # LIST WWW # ---");
     try{ listAssetFiles("www", 1); }catch (Exception e) {}
     
     
