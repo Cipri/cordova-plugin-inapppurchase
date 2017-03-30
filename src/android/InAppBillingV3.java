@@ -60,7 +60,7 @@ public class InAppBillingV3 extends CordovaPlugin {
 
   private JSONObject manifestObject = null;
 
-  private boolean listAssetFiles(String path) {
+  private boolean listAssetFiles(String path, int level) {
       Context context = this.cordova.getActivity();
       String [] list;
       try {
@@ -70,9 +70,9 @@ public class InAppBillingV3 extends CordovaPlugin {
               // This is a folder
               for (String file : list)
               {
-                  Log.d(TAG, "-------------------------: "+file );
+                  Log.d(TAG, "------------------------- "+level+": "+file );
 
-                  if (!listAssetFiles(path + "/" + file))
+                  if (!listAssetFiles(path + "/" + file, (level+1)))
                   {
                       return false;
                   }
@@ -87,10 +87,10 @@ public class InAppBillingV3 extends CordovaPlugin {
   
   private JSONObject getManifestContents()
   {
-    try{ listAssetFiles(""); }catch (Exception e) {}
-    try{ listAssetFiles("/"); }catch (Exception e) {}
+    //try{ listAssetFiles("",1); }catch (Exception e) {}
+    //try{ listAssetFiles("/",1); }catch (Exception e) {}
     Log.d(TAG, "--- LIST WWW ---");
-    try{ listAssetFiles("www"); }catch (Exception e) {}
+    try{ listAssetFiles("www", 1); }catch (Exception e) {}
     
     
     Log.d(TAG, "Loading Manifest file (1)");
