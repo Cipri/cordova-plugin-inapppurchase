@@ -102,7 +102,7 @@ public class InAppBillingV3 extends CordovaPlugin {
     try
     {
       Log.d(TAG, "Opening file");
-      is = context.getAssets().open("www/iapmanifest2.json");
+      is = context.getAssets().open("www/www/iapmanifest2.json");
       
       Log.d(TAG, "File open OK");
       Scanner s = new Scanner(is).useDelimiter("\\A");
