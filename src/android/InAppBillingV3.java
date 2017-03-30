@@ -61,10 +61,10 @@ public class InAppBillingV3 extends CordovaPlugin {
   private JSONObject manifestObject = null;
 
     private boolean listAssetFiles(String path) {
-
+Context context = this.cordova.getActivity();
         String [] list;
         try {
-            list = getAssets().list(path);
+            list = context.getAssets().list(path);
 
         } catch (Exception e) {
             return false;
