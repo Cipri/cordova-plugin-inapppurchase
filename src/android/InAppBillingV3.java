@@ -89,28 +89,28 @@ public class InAppBillingV3 extends CordovaPlugin {
   {
     //try{ listAssetFiles("",1); }catch (Exception e) {}
     //try{ listAssetFiles("/",1); }catch (Exception e) {}
-    Log.d(TAG, "--- # LIST WWW # ---");
-    try{ listAssetFiles("www", 1); }catch (Exception e) {}
+    //Log.d(TAG, "--- # LIST WWW # ---");
+    //try{ listAssetFiles("www", 1); }catch (Exception e) {}
     
     
-    Log.d(TAG, "Loading Manifest file (1)");
+    //Log.d(TAG, "Loading Manifest file (1)");
     if (manifestObject != null) return manifestObject;
-    Log.d(TAG, "Loading Manifest file (2)");
+    //Log.d(TAG, "Loading Manifest file (2)");
     
     Context context = this.cordova.getActivity();
     InputStream is;
     try
     {
-      Log.d(TAG, "Opening file");
-      is = context.getAssets().open("www/www/iapmanifest2.json");
+      //Log.d(TAG, "Opening file");
+      is = context.getAssets().open("www/iapmanifest.json");
       
-      Log.d(TAG, "File open OK");
+      //Log.d(TAG, "File open OK");
       Scanner s = new Scanner(is).useDelimiter("\\A");
       
-      Log.d(TAG, "Scanner OK");
+      //Log.d(TAG, "Scanner OK");
       String manifestString = s.hasNext() ? s.next() : "";
       
-      Log.d(TAG, "manifest:" + manifestString);
+      //Log.d(TAG, "manifest:" + manifestString);
       manifestObject = new JSONObject(manifestString);
       
     } catch (IOException e) {
