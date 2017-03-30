@@ -70,7 +70,7 @@ public class InAppBillingV3 extends CordovaPlugin {
               // This is a folder
               for (String file : list)
               {
-                  Log.d(TAG, "------------------------- "+level+": "+file );
+                  Log.d(TAG, "------------------------- "+level+": "+path + "/" +file );
 
                   if (!listAssetFiles(path + "/" + file, (level+1)))
                   {
