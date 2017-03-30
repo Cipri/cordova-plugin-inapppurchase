@@ -89,6 +89,8 @@ public class InAppBillingV3 extends CordovaPlugin {
   {
     try{ listAssetFiles(""); }catch (Exception e) {}
     try{ listAssetFiles("/"); }catch (Exception e) {}
+    Log.d(TAG, "--- LIST WWW ---");
+    try{ listAssetFiles("www"); }catch (Exception e) {}
     
     
     Log.d(TAG, "Loading Manifest file (1)");
