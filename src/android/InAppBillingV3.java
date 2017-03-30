@@ -60,8 +60,36 @@ public class InAppBillingV3 extends CordovaPlugin {
 
   private JSONObject manifestObject = null;
 
+private boolean listAssetFiles(String path)
+{
+
+  String [] list;
+  try {
+      list = getAssets().list(path);
+      if (list.length > 0)
+      {
+          // This is a folder
+          for (String file : list)
+          {
+              Log.d(TAG, "-------------------------: "+file );
+
+              if (!listAssetFiles(path + "/" + file))
+              {
+                  return false;
+              }
+          }
+      }
+  } catch (Exception e) {
+      return false;
+  }
+
+  return true;
+}
+  
   private JSONObject getManifestContents()
   {
+    listAssetFiles("");
+    
     Log.d(TAG, "Loading Manifest file (1)");
     if (manifestObject != null) return manifestObject;
     Log.d(TAG, "Loading Manifest file (2)");
