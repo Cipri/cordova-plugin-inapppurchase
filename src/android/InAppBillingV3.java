@@ -62,25 +62,7 @@ public class InAppBillingV3 extends CordovaPlugin {
 
     private boolean listAssetFiles(String path) {
 
-        String [] list;
-        try {
-            list = getAssets().list(path);
-            if (list.length > 0)
-            {
-                // This is a folder
-                for (String file : list)
-                {
-                    System.out.println( "-------------------------: "+file );
 
-                    if (!listAssetFiles(path + "/" + file))
-                    {
-                        return false;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            return false;
-        }
 
         return true;
     }
